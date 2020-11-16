@@ -5,7 +5,7 @@ using namespace std;
 #include <iostream>
 class Student	{
     public:
-        static const short MAX_CLASSES = 100;
+        static const short MAX_CLASSES = 3;
     private:
         //static const short MAX_CLASSES = 100;
 		string studentID;
@@ -60,9 +60,9 @@ public:
 
     DegreeProgram getDegreeProgram() const { return degreeProgram; }
     void setDegreeProgram(DegreeProgram degreeProgram) { this->degreeProgram = degreeProgram; }
-    Student() {
-
-    }
+    Student(string studentID, string firstName, string lastName, string email, unsigned short age,
+            int numberDaysPerClass1, int numberDaysPerClass2, int numberDaysPerClass3,
+            DegreeProgram degreeProgram) {}
 
 };
 
