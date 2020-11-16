@@ -17,7 +17,7 @@ class Student	{
 		DegreeProgram degreeProgram;
 		
 public:
-    //constructor
+    //basic destructor
 
     ~Student() {
 
@@ -36,8 +36,9 @@ public:
 
     unsigned short getAge() const { return age; }
     void setAge(unsigned short age) { this->age = age; }
-
-    int getNumberDaysPerClass(int numberClass) const {
+    int getNumberDaysPerClass(int numberClass) const {}
+    void setNumberDaysPerClass(int numberDaysPerClass, int numberClass) {}
+        /*int getNumberDaysPerClass(int numberClass) const {
         if (numberClass >= 0 && numberClass < MAX_CLASSES) {
             return numberDaysPerClass[numberClass];
         }
@@ -45,8 +46,8 @@ public:
             std::cout << "MG: array index in getter is out of boundaries.\n";
             return NULL;
         }
-    }
-    void setNumberDaysPerClass(int numberDaysPerClass, int numberClass) {
+    }*/
+   /* void setNumberDaysPerClass(int numberDaysPerClass, int numberClass) {
         if (numberClass >= 0 && numberClass < MAX_CLASSES) {
             this->numberDaysPerClass[numberClass] = numberDaysPerClass;
         }
@@ -56,13 +57,14 @@ public:
                 this->numberDaysPerClass[i] = NULL;
             }
         }
-    }
+    }*/
 
     DegreeProgram getDegreeProgram() const { return degreeProgram; }
     void setDegreeProgram(DegreeProgram degreeProgram) { this->degreeProgram = degreeProgram; }
     Student(string studentID, string firstName, string lastName, string email, unsigned short age,
             int numberDaysPerClass1, int numberDaysPerClass2, int numberDaysPerClass3,
             DegreeProgram degreeProgram) {}
+    void print();
 
 };
 
