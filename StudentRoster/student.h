@@ -2,9 +2,12 @@
 using namespace std;
 #include <string>
 #include "degree.h"
+#include <iostream>
 class Student	{
-	private:
-		static const short MAX_CLASSES = 100;
+    public:
+        static const short MAX_CLASSES = 100;
+    private:
+        //static const short MAX_CLASSES = 100;
 		string studentID;
 		string firstName;
 		string lastName;
@@ -12,16 +15,10 @@ class Student	{
 		unsigned short age;
 		int numberDaysPerClass[MAX_CLASSES];
 		DegreeProgram degreeProgram;
-	
-		
-	
-
 		
 public:
     //constructor
-    Student() {
 
-    }
     ~Student() {
 
     }
@@ -40,12 +37,32 @@ public:
     unsigned short getAge() const { return age; }
     void setAge(unsigned short age) { this->age = age; }
 
-    //refactor using pointers as is it is not right
-    int getNumberDaysPerClass() const { return numberDaysPerClass[MAX_CLASSES]; }
-    void setNumberDaysPerClass(int numberDaysPerClass[]) { this->numberDaysPerClass = numberDaysPerClass; }
+    int getNumberDaysPerClass(int numberClass) const {
+        if (numberClass >= 0 && numberClass < MAX_CLASSES) {
+            return numberDaysPerClass[numberClass];
+        }
+        else {
+            std::cout << "MG: array index in getter is out of boundaries.\n";
+            return NULL;
+        }
+    }
+    void setNumberDaysPerClass(int numberDaysPerClass, int numberClass) {
+        if (numberClass >= 0 && numberClass < MAX_CLASSES) {
+            this->numberDaysPerClass[numberClass] = numberDaysPerClass;
+        }
+        else {
+            std::cout << "MG: array index in setter is out of boundaries.\n";
+            for (int i = 0; i++; MAX_CLASSES) {
+                this->numberDaysPerClass[i] = NULL;
+            }
+        }
+    }
 
     DegreeProgram getDegreeProgram() const { return degreeProgram; }
     void setDegreeProgram(DegreeProgram degreeProgram) { this->degreeProgram = degreeProgram; }
+    Student() {
+
+    }
 
 };
 
