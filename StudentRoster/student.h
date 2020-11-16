@@ -12,6 +12,10 @@ class Student	{
 		unsigned short age;
 		int numberDaysPerClass[MAX_CLASSES];
 		DegreeProgram degreeProgram;
+	
+		
+	
+
 		
 };
 
