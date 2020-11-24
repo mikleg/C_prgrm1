@@ -3,6 +3,7 @@
 class Roster{
 private:
 	static const short MAX_STUDENTS = 10000;
+	int currentNumStudents;
 	Student* classRosterArray[MAX_STUDENTS];
 public:
 	//constructor
@@ -13,7 +14,7 @@ public:
 
 	}
 	void add(string studentID, string firstName, string lastName, string emailAddress, int age,
-	         int daysInCourse1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeprogram);
+		 int numberDaysPerClass[], int sizeDaysPerClass, DegreeProgram degreeprogram);
 	void remove(string studentID);
 	void printAll();
 	void printAverageDaysInCourse(string studentID);
