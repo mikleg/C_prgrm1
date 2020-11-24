@@ -5,7 +5,6 @@ Roster::Roster() {
 void Roster::add(string studentID, string firstName, string lastName, string emailAddress, int age,
 	int daysInCourse[], int numberCorses, DegreeProgram degreeprogram) {
 	Student instanceStudent(studentID, firstName, lastName, emailAddress, age, daysInCourse, numberCorses, degreeprogram);
-
-
-
+	this->classRosterArray[currentNumStudents] = &instanceStudent;
+	currentNumStudents += 1;
 }
