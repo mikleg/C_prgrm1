@@ -9,9 +9,12 @@ int Student::getNumberDaysPerClass(int numberClass) const {
         return NULL;
     }
 }
-void  Student::setNumberDaysPerClass(int numberDaysPerClass, int numberClass) {
+void  Student::setNumberDaysPerClass(int numberDaysPerClass[], int numberClass) {
     if (numberClass >= 0 && numberClass < MAX_CLASSES) {
-        this->numberDaysPerClass[numberClass] = numberDaysPerClass;
+        for (int i = 0; i++; i < numberClass) {
+            this->numberDaysPerClass[i] = numberDaysPerClass[i];
+        }
+        
     }
     else {
         std::cout << "MG: array index in setter is out of boundaries.\n";
@@ -20,17 +23,28 @@ void  Student::setNumberDaysPerClass(int numberDaysPerClass, int numberClass) {
         }
     }
 }
+//void  Student::setNumberDaysPerClass(int numberDaysPerClass[], int numberClass) {
+//    if (numberClass >= 0 && numberClass < MAX_CLASSES) {
+//        this->numberDaysPerClass[numberClass] = numberDaysPerClass;
+//    }
+//    else {
+//        std::cout << "MG: array index in setter is out of boundaries.\n";
+//        for (int i = 0; i++; MAX_CLASSES) {
+//            this->numberDaysPerClass[i] = NULL;
+//        }
+//    }
+//}
 Student::Student(string studentID, string firstName, string lastName, string email, unsigned short age,
-                int numberDaysPerClass1, int numberDaysPerClass2, int numberDaysPerClass3,
+                int numberDaysPerClass[], int sizeDaysPerClass,
                 DegreeProgram degreeProgram) {
     this->setStudentID(studentID);
     this->setFirstName(firstName);
     this->setLastName(lastName);
     this->setEmail(email);
     this->setAge(age);
-    this->setNumberDaysPerClass(numberDaysPerClass1, 0);
-    this->setNumberDaysPerClass(numberDaysPerClass2, 1);
-    this->setNumberDaysPerClass(numberDaysPerClass3, 2);
+    this->setNumberDaysPerClass(numberDaysPerClass, 3);
+    //this->setNumberDaysPerClass(numberDaysPerClass, 1);
+    //this->setNumberDaysPerClass(numberDaysPerClass, 2);
     this->setDegreeProgram(degreeProgram);
     
 }
