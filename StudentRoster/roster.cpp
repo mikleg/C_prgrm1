@@ -15,12 +15,13 @@ void Roster::remove(string studentID) {
 		// get shallow copy of actual object
 		Student tempInstanceStudent = *classRosterArray[i];
 		if (studentID == tempInstanceStudent.getStudentID()) {
-			//delete actual object. 
+				//delete actual object. 
 			delete classRosterArray[i];
-
-
-
-
+			//shift all elements of array
+			for (int j = i; j < currentNumStudents-1; j++) {
+				classRosterArray[j] = classRosterArray[j+1];
+			}
+			currentNumStudents--; //exlude the last element
 		}
 	}
 }
