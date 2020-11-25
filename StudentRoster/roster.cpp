@@ -23,5 +23,12 @@ void Roster::remove(string studentID) {
 			}
 			currentNumStudents--; //exlude the last element
 		}
+		break; //exit from loop
+	}
+}
+void Roster::printAll() {
+	for (int i = 0; i < currentNumStudents; i++) {
+		Student tempInstanceStudent = *classRosterArray[i];
+		tempInstanceStudent.print();
 	}
 }

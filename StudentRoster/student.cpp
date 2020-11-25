@@ -49,14 +49,17 @@ Student::Student(string studentID, string firstName, string lastName, string ema
     
 }
 void Student::print() {
-    std::cout << "\n";
-    std::cout << getStudentID() << ", ";
-    std::cout << getFirstName() << ", ";
-    std::cout << getLastName() << ", ";
-    std::cout << getEmail() << ", ";
-    std::cout << getAge() << ", ";
-    std::cout << getNumberDaysPerClass(0) << ", ";
-    std::cout << getNumberDaysPerClass(1) << ", ";
-    std::cout << getNumberDaysPerClass(2) << ", ";
-    std::cout << getDegreeProgram();
+    //std::cout << "\n";
+    std::cout << getStudentID() << "/t";
+    std::cout << getFirstName() << "/t";
+    std::cout << getLastName() << "/t";
+    std::cout << getEmail() << "/t";
+    std::cout << getAge() << "/t";
+    std::cout << "{" << getDaysInCourse()[0] << ", ";
+    std::cout << getDaysInCourse()[1] << ", ";
+    std::cout << getDaysInCourse()[2] << "\t";
+    //std::cout << getNumberDaysPerClass(0) << ", ";
+    //std::cout << getNumberDaysPerClass(1) << ", ";
+    //std::cout << getNumberDaysPerClass(2) << ", ";
+    std::cout << getDegreeProgram() << "\n";
 }

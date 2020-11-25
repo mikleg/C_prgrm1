@@ -37,6 +37,7 @@ public:
     unsigned short getAge() const { return age; }
     void setAge(unsigned short age) { this->age = age; }
     int getNumberDaysPerClass(int numberClass) const {}
+    int *getDaysInCourse() {return numberDaysPerClass;}
     void setNumberDaysPerClass(int numberDaysPerClass[], int numberClass) {}
         /*int getNumberDaysPerClass(int numberClass) const {
         if (numberClass >= 0 && numberClass < MAX_CLASSES) {
