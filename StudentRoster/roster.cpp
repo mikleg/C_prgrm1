@@ -51,3 +51,13 @@ void Roster::printAverageDaysInCourse(string studentID) {
 	}
 	cout << "ID was not found\n";
 }
+
+void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
+	for (int i = 0; i < currentNumStudents; i++) {
+		// get shallow copy of actual object
+		Student tempInstanceStudent = *classRosterArray[i];
+		if (degreeProgram == tempInstanceStudent.getDegreeProgram()) {
+			tempInstanceStudent.print();
+		}
+	}
+}
