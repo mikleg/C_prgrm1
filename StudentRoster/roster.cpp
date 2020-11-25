@@ -2,6 +2,7 @@
 Roster::Roster() {
 	this->currentNumStudents = 0;
 }
+
 void Roster::add(string studentID, string firstName, string lastName, string emailAddress, int age,
 	int daysInCourse[], int numberCorses, DegreeProgram degreeprogram) {
 	//Student instanceStudent(studentID, firstName, lastName, emailAddress, age, daysInCourse, numberCorses, degreeprogram);
@@ -10,6 +11,7 @@ void Roster::add(string studentID, string firstName, string lastName, string ema
 	this->classRosterArray[currentNumStudents] = new Student(studentID, firstName, lastName, emailAddress, age, daysInCourse, numberCorses, degreeprogram);
 	currentNumStudents ++;
 }
+
 void Roster::remove(string studentID) {
 	for (int i = 0; i < currentNumStudents; i++) {
 		// get shallow copy of actual object
@@ -24,11 +26,28 @@ void Roster::remove(string studentID) {
 			currentNumStudents--; //exlude the last element
 		}
 		break; //exit from loop
+		
 	}
+	cout << "ID was not found\n";
 }
+
 void Roster::printAll() {
 	for (int i = 0; i < currentNumStudents; i++) {
 		Student tempInstanceStudent = *classRosterArray[i];
 		tempInstanceStudent.print();
 	}
+}
+
+void Roster::printAverageDaysInCourse(string studentID) {
+	for (int i = 0; i < currentNumStudents; i++) {
+		// get shallow copy of actual object
+		Student tempInstanceStudent = *classRosterArray[i];
+		if (studentID == tempInstanceStudent.getStudentID()) {
+			cout << (tempInstanceStudent.getDaysInCourse()[0]
+				+ tempInstanceStudent.getDaysInCourse()[1]
+				+ tempInstanceStudent.getDaysInCourse()[2]) / 3;
+		}
+		break; //exit from loop
+	}
+	cout << "ID was not found\n";
 }
