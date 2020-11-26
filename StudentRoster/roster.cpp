@@ -63,5 +63,10 @@ void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
 }
 
 void Roster::printInvalidEmails() {
-
+	for (int i = 0; i < currentNumStudents; i++) {
+		Student tempInstanceStudent = *classRosterArray[i];
+		if (!tempInstanceStudent.getEmailIsValid()) {
+			tempInstanceStudent.print();
+		}
+	}
 }
