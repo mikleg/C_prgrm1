@@ -35,29 +35,25 @@ void  Student::setNumberDaysPerClass(int numberDaysPerClass[], int numberClass) 
 //        }
 //    }
 //}
-int atPosition(string email) {
-    int atPosition = email.length();
-    unsigned short int atCount = 0;
-    for (int i; i < email.length(); i++) {
-        if (email[i] == '@') {
-            if (atCount == 0) {
-                atCount++;
-                atPosition = i;
-                if (atPosition == 0 || atPosition == email.length() - 1) {
-                    return NULL; //if @ is the first ol the last symbol. It's invalid. 
-                }
-
-            }
-            else {
-                return NULL; //there are 2 @ symbols. It's invalid
-            }
-        }
+int symbPosition(string str, string symbol) {
+    if (str.find(symbol) == str.rfind(symbol)
+        && str.find(symbol) > 0
+        && str.find(symbol) < str.length() - 1) { //if last find = first -> we have only one such symbol
+        return str.find(symbol);
     }
-    return atPosition;
+    else return NULL;
 }
 
 bool domainIsValid(string domenPart) {
-    return false;
+    if (symbPosition(domenPart, ".") != NULL) { //if we have . and it is not first and last 
+        for (int i; i < domenPart.length(); i++) {
+            if (!isalnum(domenPart[i]) && domenPart[i] != '.') {
+                return false;
+            }
+        }
+    }
+    else return false;
+    return true;
 }
 
 bool localIsValid(string localPart) {
@@ -67,9 +63,9 @@ bool localIsValid(string localPart) {
 bool mailIsValid(string email) {
     string localPart = "";
     string domenPart = "";
-    if (atPosition(email) != NULL) {
-        localPart = email.substr(0, atPosition(email) + 1);
-        domenPart = email.substr(atPosition(email), email.length() - atPosition(email)+1);
+    if (symbPosition(email, "@") != NULL) {
+        localPart = email.substr(0, symbPosition(email, "@") + 1);
+        domenPart = email.substr(symbPosition(email, "@"), email.length() - symbPosition(email, "@") +1);
     }
     if (domainIsValid(domenPart) && localIsValid(localPart))
         return true;
