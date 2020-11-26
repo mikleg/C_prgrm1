@@ -43,32 +43,12 @@ public:
     int getNumberDaysPerClass(int numberClass) const {}
     int *getDaysInCourse() {return numberDaysPerClass;}
     void setNumberDaysPerClass(int numberDaysPerClass[], int numberClass) {}
-        /*int getNumberDaysPerClass(int numberClass) const {
-        if (numberClass >= 0 && numberClass < MAX_CLASSES) {
-            return numberDaysPerClass[numberClass];
-        }
-        else {
-            std::cout << "MG: array index in getter is out of boundaries.\n";
-            return NULL;
-        }
-    }*/
-   /* void setNumberDaysPerClass(int numberDaysPerClass, int numberClass) {
-        if (numberClass >= 0 && numberClass < MAX_CLASSES) {
-            this->numberDaysPerClass[numberClass] = numberDaysPerClass;
-        }
-        else {
-            std::cout << "MG: array index in setter is out of boundaries.\n";
-            for (int i = 0; i++; MAX_CLASSES) {
-                this->numberDaysPerClass[i] = NULL;
-            }
-        }
-    }*/
-
     DegreeProgram getDegreeProgram() const { return degreeProgram; }
     void setDegreeProgram(DegreeProgram degreeProgram) { this->degreeProgram = degreeProgram; }
     Student(string studentID, string firstName, string lastName, string email, unsigned short age,
             int numberDaysPerClass[], int sizeDaysPerClass,
             DegreeProgram degreeProgram) {}
+    Student(string nullStudent){}
     void print();
 
 };

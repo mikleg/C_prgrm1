@@ -12,6 +12,15 @@ void Roster::add(string studentID, string firstName, string lastName, string ema
 	this->classRosterArray[currentNumStudents] = new Student(studentID, firstName, lastName, emailAddress, age, daysInCourse, numberCorses, degreeprogram);
 	currentNumStudents ++;
 }
+Student Roster::getStudentByNumber(int number) {
+	if (number <= currentNumStudents) {
+		return *classRosterArray[number];
+	}
+	else {
+		return Student("NULL"); //not valid record
+	}
+
+}
 
 void Roster::remove(string studentID) {
 	for (int i = 0; i < currentNumStudents; i++) {

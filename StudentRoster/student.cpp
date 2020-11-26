@@ -87,6 +87,18 @@ Student::Student(string studentID, string firstName, string lastName, string ema
     this->setEmailIsValid(mailIsValid(email));
     
 }
+
+Student::Student(string nullStudent) { //return NULL record (for errors)
+    this->setStudentID("NULL");
+    this->setFirstName("NULL");
+    this->setLastName("NULL");
+    this->setEmail("NULL");
+    this->setAge(0);
+    this->setNumberDaysPerClass(nullptr, 3);
+    this->setDegreeProgram(SOFTWARE);
+    this->setEmailIsValid(false);
+
+}
 void Student::print() {
     //std::cout << "\n";
     std::cout << getStudentID() << "/t";

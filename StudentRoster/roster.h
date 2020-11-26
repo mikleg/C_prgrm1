@@ -19,5 +19,7 @@ public:
 	void printAverageDaysInCourse(string studentID);
 	void printInvalidEmails();
 	void printByDegreeProgram(DegreeProgram degreeProgram);
+	int getCurrentNumStudents() {return currentNumStudents;}
+	Student getStudentByNumber(int number) {}
 };
 
