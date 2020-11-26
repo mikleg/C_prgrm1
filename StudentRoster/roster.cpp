@@ -1,13 +1,14 @@
 #include "roster.h"
 Roster::Roster() {
 	this->currentNumStudents = 0;
+	for (int i = 0; i < MAX_STUDENTS; i++) { //initialization check that without it
+		this->classRosterArray[currentNumStudents] = NULL;
+
+	}
 }
 
 void Roster::add(string studentID, string firstName, string lastName, string emailAddress, int age,
 	int daysInCourse[], int numberCorses, DegreeProgram degreeprogram) {
-	//Student instanceStudent(studentID, firstName, lastName, emailAddress, age, daysInCourse, numberCorses, degreeprogram);
-	//this->classRosterArray[currentNumStudents] = &instanceStudent;
-		//Student instanceStudent(studentID, firstName, lastName, emailAddress, age, daysInCourse, numberCorses, degreeprogram);
 	this->classRosterArray[currentNumStudents] = new Student(studentID, firstName, lastName, emailAddress, age, daysInCourse, numberCorses, degreeprogram);
 	currentNumStudents ++;
 }

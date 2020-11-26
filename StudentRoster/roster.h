@@ -2,13 +2,12 @@
 #include "student.h"
 class Roster{
 private:
-	static const short MAX_STUDENTS = 10000;
-	int currentNumStudents;
+	static const int MAX_STUDENTS = 10000;
+	int currentNumStudents ;
 	Student* classRosterArray[MAX_STUDENTS];
 public:
 	//constructor
 	Roster() {
-
 	}
 	~Roster() {
 
