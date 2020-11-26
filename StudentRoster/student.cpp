@@ -57,7 +57,9 @@ bool domainIsValid(string domenPart) {
 }
 
 bool localIsValid(string localPart) {
-    return false;
+    if (localPart.find(' ') == string::npos)
+        return true;
+    else return false;
 }
 
 bool mailIsValid(string email) {
