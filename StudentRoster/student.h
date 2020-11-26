@@ -15,6 +15,7 @@ class Student	{
 		unsigned short age;
 		int numberDaysPerClass[MAX_CLASSES];
 		DegreeProgram degreeProgram;
+        bool emailIsValid;
 		
 public:
     //basic destructor
@@ -22,12 +23,15 @@ public:
     ~Student() {
 
     }
+    bool getEmailIsValid() const { return emailIsValid; }
+    void setEmailIsValid(bool emailValid) { this->emailIsValid = emailValid; }
+    
     string getStudentID() const { return studentID; }
     void setStudentID(string studentID) { this->studentID = studentID; }
-
+    
     string getFirstName() const { return firstName; }
     void setFirstName(string firstName) { this->firstName = firstName; }
-
+    
     string getLastName() const { return lastName; }
     void setLastName(string lastName) { this->lastName = lastName; }
 

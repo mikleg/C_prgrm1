@@ -61,3 +61,7 @@ void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
 		}
 	}
 }
+
+void Roster::printInvalidEmails() {
+
+}

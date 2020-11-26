@@ -1,5 +1,6 @@
 
 #include "student.h"
+#include<cstring>
 int Student::getNumberDaysPerClass(int numberClass) const {
     if (numberClass >= 0 && numberClass < MAX_CLASSES) {
         return numberDaysPerClass[numberClass];
@@ -34,6 +35,47 @@ void  Student::setNumberDaysPerClass(int numberDaysPerClass[], int numberClass) 
 //        }
 //    }
 //}
+int atPosition(string email) {
+    int atPosition = email.length();
+    unsigned short int atCount = 0;
+    for (int i; i < email.length(); i++) {
+        if (email[i] == '@') {
+            if (atCount == 0) {
+                atCount++;
+                atPosition = i;
+                if (atPosition == 0 || atPosition == email.length() - 1) {
+                    return NULL; //if @ is the first ol the last symbol. It's invalid. 
+                }
+
+            }
+            else {
+                return NULL; //there are 2 @ symbols. It's invalid
+            }
+        }
+    }
+    return atPosition;
+}
+
+bool domainIsValid(string domenPart) {
+    return false;
+}
+
+bool localIsValid(string localPart) {
+    return false;
+}
+
+bool mailIsValid(string email) {
+    string localPart = "";
+    string domenPart = "";
+    if (atPosition(email) != NULL) {
+        localPart = email.substr(0, atPosition(email) + 1);
+        domenPart = email.substr(atPosition(email), email.length() - atPosition(email)+1);
+    }
+    if (domainIsValid(domenPart) && localIsValid(localPart))
+        return true;
+    else return false;
+}
+
 Student::Student(string studentID, string firstName, string lastName, string email, unsigned short age,
                 int numberDaysPerClass[], int sizeDaysPerClass,
                 DegreeProgram degreeProgram) {
@@ -43,9 +85,8 @@ Student::Student(string studentID, string firstName, string lastName, string ema
     this->setEmail(email);
     this->setAge(age);
     this->setNumberDaysPerClass(numberDaysPerClass, 3);
-    //this->setNumberDaysPerClass(numberDaysPerClass, 1);
-    //this->setNumberDaysPerClass(numberDaysPerClass, 2);
     this->setDegreeProgram(degreeProgram);
+    this->setEmailIsValid(mailIsValid(email));
     
 }
 void Student::print() {
