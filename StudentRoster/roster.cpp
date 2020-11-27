@@ -30,7 +30,7 @@ Roster::Roster(const string dataArray[]) {
 		short previousPosition = 0;
 		string id, firstName, lastName, emailAddress;
 		short unsigned age =0;
-		int daysInCourse[] = { 0,0,0 };
+		int localDaysInCourse[3] = { 0,0,0 };
 		DegreeProgram degreeprogram = NETWORK;
 		for (int j = 0; j < (dataArray[i].length()); j++) {
 			if (dataArray[i][j] == ',') {
@@ -56,26 +56,30 @@ Roster::Roster(const string dataArray[]) {
 					previousPosition = j;
 				}
 				else if (fieldNumber == 6) {
-					daysInCourse[0] = stoi(dataArray[i].substr(previousPosition + 1, j - previousPosition));
+					localDaysInCourse[0] = stoi(dataArray[i].substr(previousPosition + 1, j - previousPosition));
 					previousPosition = j;
 				}
 				else if (fieldNumber == 7) {
-					daysInCourse[1] = stoi(dataArray[i].substr(previousPosition + 1, j - previousPosition));
+					localDaysInCourse[1] = stoi(dataArray[i].substr(previousPosition + 1, j - previousPosition));
 					previousPosition = j;
 				}
 				else if (fieldNumber == 8) {
-					daysInCourse[2] = stoi(dataArray[i].substr(previousPosition + 1, j - previousPosition));
+					localDaysInCourse[2] = stoi(dataArray[i].substr(previousPosition + 1, j - previousPosition));
 					degreeprogram = degreeParser(dataArray[i].substr(j+1, dataArray[i].length() - previousPosition));
 				}
 			}
 		}
-		add(id, firstName, lastName, emailAddress, age, daysInCourse, 3, degreeprogram);
+		add(id, firstName, lastName, emailAddress, age, localDaysInCourse, degreeprogram);
 	}
 }
 
 void Roster::add(string studentID, string firstName, string lastName, string emailAddress, int age,
-	int daysInCourse[], int numberCourses, DegreeProgram degreeprogram) {
-	this->classRosterArray[currentNumStudents] = new Student(studentID, firstName, lastName, emailAddress, age, daysInCourse, numberCourses, degreeprogram);
+	int daysInCourse[3], DegreeProgram degreeprogram) {
+	int * debug[3];
+	debug[0] = &daysInCourse[0];
+	debug[1] = &daysInCourse[1];
+	debug[2] = &daysInCourse[2];
+	this->classRosterArray[currentNumStudents] = new Student(studentID, firstName, lastName, emailAddress, age, debug, degreeprogram);
 	currentNumStudents ++;
 }
 Student Roster::getStudentByNumber(const int number) {

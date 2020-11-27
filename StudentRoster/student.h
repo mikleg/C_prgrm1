@@ -42,12 +42,11 @@ public:
     void setAge(unsigned short age) { this->age = age; }
     int getNumberDaysPerClass(int numberClass) const;
     int *getDaysInCourse() {return numberDaysPerClass;}
-    void setNumberDaysPerClass(int numberDaysPerClass[], int numberClass);
+    void setNumberDaysPerClass(int numberDaysPerClass[MAX_CLASSES]);
     DegreeProgram getDegreeProgram() const { return degreeProgram; }
     void setDegreeProgram(DegreeProgram degreeProgram) { this->degreeProgram = degreeProgram; }
     Student(string studentID, string firstName, string lastName, string email, unsigned short age,
-        int numberDaysPerClass[], int sizeDaysPerClass,
-        DegreeProgram degreeProgram);
+        int *numberDaysPerClass[3], DegreeProgram degreeProgram);
     Student(string nullStudent);
     void print();
 

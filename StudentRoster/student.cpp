@@ -10,8 +10,8 @@ int Student::getNumberDaysPerClass(int numberClass) const {
         return NULL;
     }
 }
-void  Student::setNumberDaysPerClass(int numberDaysPerClass[], int numberClass) {
-    if (numberClass >= 0 && numberClass < MAX_CLASSES) {
+void  Student::setNumberDaysPerClass(int localNumberDaysPerClass[MAX_CLASSES]) {
+    /*if (numberClass >= 0 && numberClass < MAX_CLASSES) {
         for (int i = 0; i++; i < numberClass) {
             this->numberDaysPerClass[i] = numberDaysPerClass[i];
         }
@@ -22,7 +22,15 @@ void  Student::setNumberDaysPerClass(int numberDaysPerClass[], int numberClass) 
         for (int i = 0; i++; MAX_CLASSES) {
             this->numberDaysPerClass[i] = NULL;
         }
+    }*/
+    //int tempArray[3] = {20, 30, 40};
+    int debug3 = MAX_CLASSES;
+    for (int i = 0; i < MAX_CLASSES;  i++) {
+        int debug2 = 0;
+        this->numberDaysPerClass[i] = localNumberDaysPerClass[i];
+        debug2 = 2;
     }
+
 }
 //void  Student::setNumberDaysPerClass(int numberDaysPerClass[], int numberClass) {
 //    if (numberClass >= 0 && numberClass < MAX_CLASSES) {
@@ -75,14 +83,13 @@ bool mailIsValid(string email) {
 }
 
 Student::Student(string studentID, string firstName, string lastName, string email, unsigned short age,
-                int numberDaysPerClass[], int sizeDaysPerClass,
-                DegreeProgram degreeProgram) {
+                int *numberDaysPerClass[3], DegreeProgram degreeProgram) {
     this->setStudentID(studentID);
     this->setFirstName(firstName);
     this->setLastName(lastName);
     this->setEmail(email);
     this->setAge(age);
-    this->setNumberDaysPerClass(numberDaysPerClass, 3);
+    this->setNumberDaysPerClass(*numberDaysPerClass);
     this->setDegreeProgram(degreeProgram);
     this->setEmailIsValid(mailIsValid(email));
     
@@ -94,13 +101,12 @@ Student::Student(string nullStudent) { //return NULL record (for errors)
     this->setLastName("NULL");
     this->setEmail("NULL");
     this->setAge(0);
-    this->setNumberDaysPerClass(nullptr, 3);
+    this->setNumberDaysPerClass(nullptr);
     this->setDegreeProgram(SOFTWARE);
     this->setEmailIsValid(false);
 
 }
 void Student::print() {
-    //std::cout << "\n";
     std::cout << getStudentID() << "\t";
     std::cout << getFirstName() << "\t";
     std::cout << getLastName() << "\t";
@@ -109,8 +115,5 @@ void Student::print() {
     std::cout << "{" << getDaysInCourse()[0] << ", ";
     std::cout << getDaysInCourse()[1] << ", ";
     std::cout << getDaysInCourse()[2] << "\t";
-    //std::cout << getNumberDaysPerClass(0) << ", ";
-    //std::cout << getNumberDaysPerClass(1) << ", ";
-    //std::cout << getNumberDaysPerClass(2) << ", ";
     std::cout << getDegreeProgram() << "\n";
 }
