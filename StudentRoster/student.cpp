@@ -114,6 +114,6 @@ void Student::print() {
     std::cout << getAge() << "\t";
     std::cout << "{" << getDaysInCourse()[0] << ", ";
     std::cout << getDaysInCourse()[1] << ", ";
-    std::cout << getDaysInCourse()[2] << "\t";
+    std::cout << getDaysInCourse()[2] << "}\t";
     std::cout << getDegreeProgram() << "\n";
 }
