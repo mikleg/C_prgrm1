@@ -49,6 +49,7 @@ public:
         int *numberDaysPerClass[3], DegreeProgram degreeProgram);
     Student(string nullStudent);
     void print();
+    /*string degreeToStr(const DegreeProgram degree);*/
 
 };
 

@@ -1,6 +1,7 @@
 
 #include "student.h"
 #include<cstring>
+//#include "degree.h"
 int Student::getNumberDaysPerClass(int numberClass) const {
     if (numberClass >= 0 && numberClass < MAX_CLASSES) {
         return numberDaysPerClass[numberClass];
@@ -102,10 +103,23 @@ Student::Student(string nullStudent) { //return NULL record (for errors)
     this->setEmail("NULL");
     this->setAge(0);
     this->setNumberDaysPerClass(nullptr);
-    this->setDegreeProgram(SOFTWARE);
+    //this->setDegreeProgram(SOFTWARE);
     this->setEmailIsValid(false);
 
 }
+//string degreeToStr(const DegreeProgram degree) {
+//    if (degree == SECURITY) {
+//        return "SECURITY";
+//    }
+//    else if (degree == NETWORK) {
+//        return "NETWORK";
+//    }
+//    else if (degree == SOFTWARE) {
+//        return "SOFTWARE";
+//    }
+//    else return "SECURITY";
+//}
+
 void Student::print() {
     std::cout << getStudentID() << "\t";
     std::cout << getFirstName() << "\t";
@@ -115,5 +129,13 @@ void Student::print() {
     std::cout << "{" << getDaysInCourse()[0] << ", ";
     std::cout << getDaysInCourse()[1] << ", ";
     std::cout << getDaysInCourse()[2] << "}\t";
+    //DegreeProgram temp = getDegreeProgram();
+    //std::cout << degreeToStr(temp) << "\n";
     std::cout << getDegreeProgram() << "\n";
 }
+
+//string Student::degreeToStr(const DegreeProgram degree)
+//{
+//    return string();
+//}
+
