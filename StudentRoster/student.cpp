@@ -101,11 +101,11 @@ Student::Student(string nullStudent) { //return NULL record (for errors)
 }
 void Student::print() {
     //std::cout << "\n";
-    std::cout << getStudentID() << "/t";
-    std::cout << getFirstName() << "/t";
-    std::cout << getLastName() << "/t";
-    std::cout << getEmail() << "/t";
-    std::cout << getAge() << "/t";
+    std::cout << getStudentID() << "\t";
+    std::cout << getFirstName() << "\t";
+    std::cout << getLastName() << "\t";
+    std::cout << getEmail() << "\t";
+    std::cout << getAge() << "\t";
     std::cout << "{" << getDaysInCourse()[0] << ", ";
     std::cout << getDaysInCourse()[1] << ", ";
     std::cout << getDaysInCourse()[2] << "\t";
