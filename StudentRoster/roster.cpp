@@ -3,16 +3,82 @@ Roster::Roster() {
 	this->currentNumStudents = 0;
 	for (int i = 0; i < MAX_STUDENTS; i++) { //initialization check that without it
 		this->classRosterArray[currentNumStudents] = NULL;
+	}
+}
 
+DegreeProgram Roster::degreeParser(const string str) {
+	if (str == "SECURITY") {
+		return SECURITY;
+	}
+	else if (str == "NETWORK") {
+		return NETWORK;
+	}
+	else if (str == "SOFTWARE") {
+		return SOFTWARE;
+	}
+	else return SECURITY;
+
+}
+
+Roster::Roster(const string dataArray[]) {
+	this->currentNumStudents = 0;
+	for (int i = 0; i < MAX_STUDENTS; i++) { //initialization check that without it
+		this->classRosterArray[currentNumStudents] = NULL;
+	}
+	for (int i = 0; i < sizeof(dataArray); i++) {
+		short fieldNumber = 0;
+		short previousPosition = 0;
+		string id, firstName, lastName, emailAddress;
+		short unsigned age;
+		int daysInCourse[] = { 0,0,0 };
+		DegreeProgram degreeprogram;
+		for (int j = 0; j < sizeof(dataArray[i]); j++) {
+			if (dataArray[i][j] == ',') {
+				fieldNumber++;
+				if (fieldNumber == 1) {
+					id = dataArray[i].substr(0, j-1);
+					previousPosition = j;
+				}
+				else if (fieldNumber == 2) {
+					firstName = dataArray[i].substr(previousPosition + 1, j - 1);
+					previousPosition = j;
+				}
+				else if (fieldNumber == 3) {
+					lastName = dataArray[i].substr(previousPosition + 1, j - 1);
+					previousPosition = j;
+				}
+				else if (fieldNumber == 4) {
+					emailAddress = dataArray[i].substr(previousPosition + 1, j - 1);
+					previousPosition = j;
+				}
+				else if (fieldNumber == 5) {
+					age = stoi(dataArray[i].substr(previousPosition + 1, j - 1));
+					previousPosition = j;
+				}
+				else if (fieldNumber == 6) {
+					daysInCourse[0] = stoi(dataArray[i].substr(previousPosition + 1, j - 1));
+					previousPosition = j;
+				}
+				else if (fieldNumber == 7) {
+					daysInCourse[1] = stoi(dataArray[i].substr(previousPosition + 1, j - 1));
+					previousPosition = j;
+				}
+				else if (fieldNumber == 8) {
+					daysInCourse[2] = stoi(dataArray[i].substr(previousPosition + 1, j - 1));
+					degreeprogram = degreeParser(dataArray[i].substr(j+1, dataArray[i].length()));
+				}
+			}
+		}
+		add(id, firstName, lastName, emailAddress, age, daysInCourse, 3, degreeprogram);
 	}
 }
 
 void Roster::add(string studentID, string firstName, string lastName, string emailAddress, int age,
-	int daysInCourse[], int numberCorses, DegreeProgram degreeprogram) {
-	this->classRosterArray[currentNumStudents] = new Student(studentID, firstName, lastName, emailAddress, age, daysInCourse, numberCorses, degreeprogram);
+	int daysInCourse[], int numberCourses, DegreeProgram degreeprogram) {
+	this->classRosterArray[currentNumStudents] = new Student(studentID, firstName, lastName, emailAddress, age, daysInCourse, numberCourses, degreeprogram);
 	currentNumStudents ++;
 }
-Student Roster::getStudentByNumber(int number) {
+Student Roster::getStudentByNumber(const int number) {
 	if (number <= currentNumStudents) {
 		return *classRosterArray[number];
 	}
@@ -22,7 +88,7 @@ Student Roster::getStudentByNumber(int number) {
 
 }
 
-void Roster::remove(string studentID) {
+void Roster::remove(const string studentID) {
 	for (int i = 0; i < currentNumStudents; i++) {
 		// get shallow copy of actual object
 		Student tempInstanceStudent = *classRosterArray[i];
@@ -48,7 +114,7 @@ void Roster::printAll() {
 	}
 }
 
-void Roster::printAverageDaysInCourse(string studentID) {
+void Roster::printAverageDaysInCourse(const string studentID) {
 	for (int i = 0; i < currentNumStudents; i++) {
 		// get shallow copy of actual object
 		Student tempInstanceStudent = *classRosterArray[i];
@@ -59,10 +125,10 @@ void Roster::printAverageDaysInCourse(string studentID) {
 		}
 		break; //exit from loop
 	}
-	cout << "ID was not found\n";
+	cout << "ID" << studentID << "was not found\n";
 }
 
-void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
+void Roster::printByDegreeProgram(const DegreeProgram degreeProgram) {
 	for (int i = 0; i < currentNumStudents; i++) {
 		// get shallow copy of actual object
 		Student tempInstanceStudent = *classRosterArray[i];

@@ -13,7 +13,7 @@ int main()
                                   "A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY",
                                   "A5,Mikhail,Gorbunov,mihailgorbunov74@gmail.com,43,30,30,30,SOFTWARE"
     };
-    Roster *classRoster = new Roster();
+    Roster *classRoster = new Roster(studentData);
     classRoster->printAll();
     classRoster->printInvalidEmails();
     //loop through classRosterArray and for each element:
