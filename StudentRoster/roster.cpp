@@ -32,40 +32,40 @@ Roster::Roster(const string dataArray[]) {
 		short unsigned age =0;
 		int daysInCourse[] = { 0,0,0 };
 		DegreeProgram degreeprogram = NETWORK;
-		for (int j = 0; j < sizeof(dataArray[i]); j++) {
+		for (int j = 0; j < (dataArray[i].length()); j++) {
 			if (dataArray[i][j] == ',') {
 				fieldNumber++;
 				if (fieldNumber == 1) {
-					id = dataArray[i].substr(0, j-1);
+					id = dataArray[i].substr(0, j);
 					previousPosition = j;
 				}
 				else if (fieldNumber == 2) {
-					firstName = dataArray[i].substr(previousPosition + 1, j - 1);
+					firstName = dataArray[i].substr(previousPosition + 1, j - previousPosition);
 					previousPosition = j;
 				}
 				else if (fieldNumber == 3) {
-					lastName = dataArray[i].substr(previousPosition + 1, j - 1);
+					lastName = dataArray[i].substr(previousPosition + 1, j - previousPosition);
 					previousPosition = j;
 				}
 				else if (fieldNumber == 4) {
-					emailAddress = dataArray[i].substr(previousPosition + 1, j - 1);
+					emailAddress = dataArray[i].substr(previousPosition + 1, j - previousPosition);
 					previousPosition = j;
 				}
 				else if (fieldNumber == 5) {
-					age = stoi(dataArray[i].substr(previousPosition + 1, j - 1));
+					age = stoi(dataArray[i].substr(previousPosition + 1, j - previousPosition));
 					previousPosition = j;
 				}
 				else if (fieldNumber == 6) {
-					daysInCourse[0] = stoi(dataArray[i].substr(previousPosition + 1, j - 1));
+					daysInCourse[0] = stoi(dataArray[i].substr(previousPosition + 1, j - previousPosition));
 					previousPosition = j;
 				}
 				else if (fieldNumber == 7) {
-					daysInCourse[1] = stoi(dataArray[i].substr(previousPosition + 1, j - 1));
+					daysInCourse[1] = stoi(dataArray[i].substr(previousPosition + 1, j - previousPosition));
 					previousPosition = j;
 				}
 				else if (fieldNumber == 8) {
-					daysInCourse[2] = stoi(dataArray[i].substr(previousPosition + 1, j - 1));
-					degreeprogram = degreeParser(dataArray[i].substr(j+1, dataArray[i].length()));
+					daysInCourse[2] = stoi(dataArray[i].substr(previousPosition + 1, j - previousPosition));
+					degreeprogram = degreeParser(dataArray[i].substr(j+1, dataArray[i].length() - previousPosition));
 				}
 			}
 		}
