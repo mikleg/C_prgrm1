@@ -46,7 +46,7 @@ int symbPosition(string str, string symbol) {
 
 bool domainIsValid(string domenPart) {
     if (symbPosition(domenPart, ".") != NULL) { //if we have . and it is not first and last 
-        for (int i; i < domenPart.length(); i++) {
+        for (int i=0; i < domenPart.length(); i++) {
             if (!isalnum(domenPart[i]) && domenPart[i] != '.') {
                 return false;
             }

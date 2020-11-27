@@ -29,9 +29,9 @@ Roster::Roster(const string dataArray[]) {
 		short fieldNumber = 0;
 		short previousPosition = 0;
 		string id, firstName, lastName, emailAddress;
-		short unsigned age;
+		short unsigned age =0;
 		int daysInCourse[] = { 0,0,0 };
-		DegreeProgram degreeprogram;
+		DegreeProgram degreeprogram = NETWORK;
 		for (int j = 0; j < sizeof(dataArray[i]); j++) {
 			if (dataArray[i][j] == ',') {
 				fieldNumber++;
