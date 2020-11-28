@@ -40,15 +40,15 @@ Roster::Roster(const string dataArray[], size_t size) {
 					previousPosition = j;
 				}
 				else if (fieldNumber == 2) {
-					firstName = dataArray[i].substr(previousPosition + 1, j - previousPosition);
+					firstName = dataArray[i].substr(previousPosition + 1, j - previousPosition-1);
 					previousPosition = j;
 				}
 				else if (fieldNumber == 3) {
-					lastName = dataArray[i].substr(previousPosition + 1, j - previousPosition);
+					lastName = dataArray[i].substr(previousPosition + 1, j - previousPosition-1);
 					previousPosition = j;
 				}
 				else if (fieldNumber == 4) {
-					emailAddress = dataArray[i].substr(previousPosition + 1, j - previousPosition);
+					emailAddress = dataArray[i].substr(previousPosition + 1, j - previousPosition-1);
 					previousPosition = j;
 				}
 				else if (fieldNumber == 5) {
@@ -127,10 +127,6 @@ void Roster::printAverageDaysInCourse(const string studentID) {
 			std::cout << tempInstanceStudent.getStudentID() << "\t";
 			std::cout << tempInstanceStudent.getFirstName() << "\t";
 			std::cout << tempInstanceStudent.getLastName() << "\t";
-
-
-
-
 			cout << "Average days in course:\t" << (tempInstanceStudent.getDaysInCourse()[0]
 				+ tempInstanceStudent.getDaysInCourse()[1]
 				+ tempInstanceStudent.getDaysInCourse()[2]) / 3 << "\n";
