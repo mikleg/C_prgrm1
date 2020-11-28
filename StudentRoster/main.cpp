@@ -20,6 +20,7 @@ int main()
     classRoster->printInvalidEmails();
     //loop through classRosterArray and for each element:
    //classRoster->printAverageDaysInCourse(/*current_object's student id*/);
+    cout << "Printing AverageDaysInCourse:\n";
     for (int i = 0; i < classRoster->getCurrentNumStudents(); i++) {    
         if (classRoster->getStudentByNumber(i).getEmail() != "NULL") {
             classRoster->printAverageDaysInCourse(classRoster->getStudentByNumber(i).getStudentID());

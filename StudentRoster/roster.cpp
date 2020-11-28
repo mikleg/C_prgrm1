@@ -120,18 +120,24 @@ void Roster::printAll() {
 }
 
 void Roster::printAverageDaysInCourse(const string studentID) {
-	cout << "Printing AverageDaysInCourse:\n";
-	for (int i = 0; i < currentNumStudents; i++) {
+		for (int i = 0; i < currentNumStudents; i++) {
 		// get shallow copy of actual object
 		Student tempInstanceStudent = *classRosterArray[i];
 		if (studentID == tempInstanceStudent.getStudentID()) {
-			cout << (tempInstanceStudent.getDaysInCourse()[0]
+			std::cout << tempInstanceStudent.getStudentID() << "\t";
+			std::cout << tempInstanceStudent.getFirstName() << "\t";
+			std::cout << tempInstanceStudent.getLastName() << "\t";
+
+
+
+
+			cout << "Average days in course:\t" << (tempInstanceStudent.getDaysInCourse()[0]
 				+ tempInstanceStudent.getDaysInCourse()[1]
-				+ tempInstanceStudent.getDaysInCourse()[2]) / 3;
+				+ tempInstanceStudent.getDaysInCourse()[2]) / 3 << "\n";
 		}
 		break; //exit from loop
 	}
-	cout << "ID" << studentID << "was not found\n";
+	//cout << "ID " << studentID << " was not found\n";
 }
 
 void Roster::printByDegreeProgram(const DegreeProgram degreeProgram) {
