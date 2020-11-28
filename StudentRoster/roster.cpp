@@ -76,13 +76,10 @@ Roster::Roster(const string dataArray[], size_t size) {
 
 void Roster::add(string studentID, string firstName, string lastName, string emailAddress, int age,
 	int daysInCourse[3], DegreeProgram degreeprogram) {
-	int * tempArray[3];
-	tempArray[0] = &daysInCourse[0];
-	tempArray[1] = &daysInCourse[1];
-	tempArray[2] = &daysInCourse[2];
-	this->classRosterArray[currentNumStudents] = new Student(studentID, firstName, lastName, emailAddress, age, tempArray, degreeprogram);
+	this->classRosterArray[currentNumStudents] = new Student(studentID, firstName, lastName, emailAddress, age, &daysInCourse, degreeprogram);
 	currentNumStudents ++;
 }
+
 Student Roster::getStudentByNumber(const int number) {
 	if (number <= currentNumStudents) {
 		return *classRosterArray[number];
@@ -90,7 +87,6 @@ Student Roster::getStudentByNumber(const int number) {
 	else {
 		return Student("NULL"); //not valid record
 	}
-
 }
 
 void Roster::remove(const string studentID) {
@@ -100,9 +96,7 @@ void Roster::remove(const string studentID) {
 		// get shallow copy of actual object
 		Student tempInstanceStudent = *classRosterArray[i];
 		string debug8 = tempInstanceStudent.getStudentID();
-		bool debug9 = false;
-		if (studentID == debug8) debug9 = true;
-		if (debug9) {
+		if (studentID == debug8) {
 				//delete actual object. 
 			delete classRosterArray[i];
 			//shift all elements of array
