@@ -1,7 +1,7 @@
 #include "roster.h"
 Roster::Roster() {
 	this->currentNumStudents = 0;
-	for (int i = 0; i < MAX_STUDENTS; i++) { //initialization check that without it
+	for (int i = 0; i < MAX_STUDENTS; i++) { //initialization 
 		this->classRosterArray[currentNumStudents] = NULL;
 	}
 }
@@ -11,6 +11,7 @@ DegreeProgram Roster::degreeParser(const string str) {
 		return SECURITY;
 	}
 	else if (str == "NETWORK") {
+		return NETWORK;
 		return NETWORK;
 	}
 	else if (str == "SOFTWARE") {
@@ -75,11 +76,11 @@ Roster::Roster(const string dataArray[], size_t size) {
 
 void Roster::add(string studentID, string firstName, string lastName, string emailAddress, int age,
 	int daysInCourse[3], DegreeProgram degreeprogram) {
-	int * debug[3];
-	debug[0] = &daysInCourse[0];
-	debug[1] = &daysInCourse[1];
-	debug[2] = &daysInCourse[2];
-	this->classRosterArray[currentNumStudents] = new Student(studentID, firstName, lastName, emailAddress, age, debug, degreeprogram);
+	int * tempArray[3];
+	tempArray[0] = &daysInCourse[0];
+	tempArray[1] = &daysInCourse[1];
+	tempArray[2] = &daysInCourse[2];
+	this->classRosterArray[currentNumStudents] = new Student(studentID, firstName, lastName, emailAddress, age, tempArray, degreeprogram);
 	currentNumStudents ++;
 }
 Student Roster::getStudentByNumber(const int number) {

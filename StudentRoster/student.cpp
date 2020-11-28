@@ -1,7 +1,7 @@
 
 #include "student.h"
 #include<cstring>
-//#include "degree.h"
+
 int Student::getNumberDaysPerClass(int numberClass) const {
     if (numberClass >= 0 && numberClass < MAX_CLASSES) {
         return numberDaysPerClass[numberClass];
@@ -13,9 +13,7 @@ int Student::getNumberDaysPerClass(int numberClass) const {
 }
 void  Student::setNumberDaysPerClass(int localNumberDaysPerClass[MAX_CLASSES]) {
     for (int i = 0; i < MAX_CLASSES;  i++) {
-        int debug2 = 0;
         this->numberDaysPerClass[i] = localNumberDaysPerClass[i];
-        debug2 = 2;
     }
 
 }
@@ -28,18 +26,6 @@ int symbPosition(string str, string symbol) {
     }
     else return NULL;
 }
-
-//bool domainIsValid(string domenPart) {
-//    if (symbPosition(domenPart, ".") != NULL) { //if we have . and it is not first and last 
-//        for (int i=0; i < domenPart.length(); i++) {
-//            if (!isalnum(domenPart[i]) && domenPart[i] != '.') {
-//                return false;
-//            }
-//        }
-//    }
-//    else return false;
-//    return true;
-//}
 
 bool domainIsValid(string domenPart) {
     if (domenPart.find(' ') == string::npos && domenPart.find('.') != string::npos)
@@ -60,8 +46,6 @@ bool mailIsValid(string email) {
         localPart = email.substr(0, symbPosition(email, "@"));
         domenPart = email.substr(symbPosition(email, "@") + 1, email.length() - symbPosition(email, "@") +1);
     }
-    bool debug5 = domainIsValid(domenPart);
-    bool debug6 = localIsValid(localPart);
     if (domainIsValid(domenPart) && localIsValid(localPart))
         return true;
     else return false;
