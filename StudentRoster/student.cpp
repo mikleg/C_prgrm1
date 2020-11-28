@@ -106,12 +106,20 @@ string degreeToStr(const DegreeProgram degree) {
 
 void Student::print() {
     std::cout << getStudentID() << "\t";
-    std::cout << getFirstName() << "\t";
-    std::cout << getLastName() << "\t";
-    std::cout << getEmail() << "\t";
-    std::cout << getAge() << "\t";
-    std::cout << "{" << getDaysInCourse()[0] << ", ";
+    std::cout << "First Name: " << getFirstName() << "\t";
+    std::cout << "Last Name: " << getLastName() << "\t";
+    std::cout << "Age: " << getAge() << "\t";
+    //std::cout << getEmail() << "\t";
+    std::cout << "daysInCourse: " << "{" << getDaysInCourse()[0] << ", ";
     std::cout << getDaysInCourse()[1] << ", ";
     std::cout << getDaysInCourse()[2] << "}\t";
-    std::cout << degreeToStr(getDegreeProgram()) << "\n";
+    std::cout << "Degree Program: " << degreeToStr(getDegreeProgram()) << "\n";
+
+}
+void Student::printEmail() {
+    std::cout << getStudentID() << "\t";
+    std::cout << "First Name: " << getFirstName() << "\t";
+    std::cout << "Last Name: " << getLastName() << "\t";
+    std::cout << "invalid e-mail: " << getEmail() << "\n";
+    
 }

@@ -112,9 +112,7 @@ void Roster::remove(const string studentID) {
 			noResult = false;
 			cout << "ID " << studentID << " was deleted\n";
 			break; //exit from loop
-		
 		}
-	
 	}
 	if (noResult) cout << "ID "<< studentID << " was not found\n";
 }
@@ -140,7 +138,6 @@ void Roster::printAverageDaysInCourse(const string studentID) {
 				+ tempInstanceStudent.getDaysInCourse()[2]) / 3 << "\n";
 		break; //exit from loop
 		}
-		
 	}
 	//cout << "ID " << studentID << " was not found\n";
 }
@@ -161,7 +158,7 @@ void Roster::printInvalidEmails() {
 	for (int i = 0; i < currentNumStudents; i++) {
 		Student tempInstanceStudent = *classRosterArray[i];
 		if (!tempInstanceStudent.getEmailIsValid()) {
-			tempInstanceStudent.print();
+			tempInstanceStudent.printEmail();
 		}
 	}
 }
