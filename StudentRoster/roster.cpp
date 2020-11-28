@@ -93,9 +93,7 @@ void Roster::remove(const string studentID) {
 	cout << "attempt to delete studentID: " << studentID << "\n";
 	bool noResult = true;
 	for (int i = 0; i < currentNumStudents; i++) {
-		// get shallow copy of actual object
-		Student tempInstanceStudent = *classRosterArray[i];
-		if (studentID == tempInstanceStudent.getStudentID()) {
+		if (studentID == classRosterArray[i]->getStudentID()) {
 				//delete actual object. 
 			delete classRosterArray[i];
 			//shift all elements of array
@@ -120,28 +118,23 @@ void Roster::printAll() {
 
 void Roster::printAverageDaysInCourse(const string studentID) {
 		for (int i = 0; i < currentNumStudents; i++) {
-		// get shallow copy of actual object
-		Student tempInstanceStudent = *classRosterArray[i];
-		if (studentID == tempInstanceStudent.getStudentID()) {
-			std::cout << tempInstanceStudent.getStudentID() << "\t";
-			std::cout << tempInstanceStudent.getFirstName() << "\t";
-			std::cout << tempInstanceStudent.getLastName() << "\t";
-			cout << "Average days in course:\t" << (tempInstanceStudent.getDaysInCourse()[0]
-				+ tempInstanceStudent.getDaysInCourse()[1]
-				+ tempInstanceStudent.getDaysInCourse()[2]) / 3 << "\n";
-		break; //exit from loop
+			if (studentID == classRosterArray[i]->getStudentID()) {
+				std::cout << classRosterArray[i]->getStudentID() << "\t";
+				std::cout << classRosterArray[i]->getFirstName() << "\t";
+				std::cout << classRosterArray[i]->getLastName() << "\t";
+				cout << "Average days in course:\t" << (classRosterArray[i]->getDaysInCourse()[0]
+					+ classRosterArray[i]->getDaysInCourse()[1]
+					+ classRosterArray[i]->getDaysInCourse()[2]) / 3 << "\n";
+			break; //exit from loop
 		}
 	}
-	//cout << "ID " << studentID << " was not found\n";
 }
 
 void Roster::printByDegreeProgram(const DegreeProgram degreeProgram) {
 	cout << "Printing ByDegreeProgram:\n";
 	for (int i = 0; i < currentNumStudents; i++) {
-		// get shallow copy of actual object
-		Student tempInstanceStudent = *classRosterArray[i];
-		if (degreeProgram == tempInstanceStudent.getDegreeProgram()) {
-			tempInstanceStudent.print();
+		if (degreeProgram == classRosterArray[i]->getDegreeProgram()) {
+			classRosterArray[i]->print();
 		}
 	}
 }
