@@ -7,7 +7,6 @@ class Student	{
     public:
         static const short MAX_CLASSES = 3;
     private:
-        //static const short MAX_CLASSES = 100;
 		string studentID;
 		string firstName;
 		string lastName;
@@ -19,25 +18,18 @@ class Student	{
 		
 public:
     //basic destructor
-
     ~Student() {
-
     }
     bool getEmailIsValid() const { return emailIsValid; }
     void setEmailIsValid(bool emailValid) { this->emailIsValid = emailValid; }
-    
     string getStudentID() const { return studentID; }
     void setStudentID(string studentID) { this->studentID = studentID; }
-    
     string getFirstName() const { return firstName; }
     void setFirstName(string firstName) { this->firstName = firstName; }
-    
     string getLastName() const { return lastName; }
     void setLastName(string lastName) { this->lastName = lastName; }
-
     string getEmail() const { return email; }
     void setEmail(string email) { this->email = email; }
-
     unsigned short getAge() const { return age; }
     void setAge(unsigned short age) { this->age = age; }
     int getNumberDaysPerClass(int numberClass) const;

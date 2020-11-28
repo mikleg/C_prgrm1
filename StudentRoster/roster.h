@@ -1,4 +1,3 @@
-#pragma once
 #include "student.h"
 class Roster{
 private:
@@ -6,7 +5,7 @@ private:
 	int currentNumStudents ;
 	Student* classRosterArray[MAX_STUDENTS];
 public:
-	//constructor
+	//constructors
 	Roster();
 	Roster(const string dataArray[], size_t size);
 	~Roster() {	}

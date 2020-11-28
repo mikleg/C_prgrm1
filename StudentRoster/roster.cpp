@@ -142,9 +142,8 @@ void Roster::printByDegreeProgram(const DegreeProgram degreeProgram) {
 void Roster::printInvalidEmails() {
 	cout << "Printing InvalidEmails:\n";
 	for (int i = 0; i < currentNumStudents; i++) {
-		Student tempInstanceStudent = *classRosterArray[i];
-		if (!tempInstanceStudent.getEmailIsValid()) {
-			tempInstanceStudent.printEmail();
+		if (!classRosterArray[i]->getEmailIsValid()) {
+			classRosterArray[i]->printEmail();
 		}
 	}
 }

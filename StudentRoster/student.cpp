@@ -93,7 +93,6 @@ void Student::print() {
     std::cout << "First Name: " << getFirstName() << "\t";
     std::cout << "Last Name: " << getLastName() << "\t";
     std::cout << "Age: " << getAge() << "\t";
-    //std::cout << getEmail() << "\t";
     std::cout << "daysInCourse: " << "{" << getDaysInCourse()[0] << ", ";
     std::cout << getDaysInCourse()[1] << ", ";
     std::cout << getDaysInCourse()[2] << "}\t";
