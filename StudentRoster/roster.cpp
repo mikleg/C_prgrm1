@@ -93,10 +93,15 @@ Student Roster::getStudentByNumber(const int number) {
 }
 
 void Roster::remove(const string studentID) {
+	cout << "attempt to delete studentID: " << studentID << "\n";
+	bool noResult = true;
 	for (int i = 0; i < currentNumStudents; i++) {
 		// get shallow copy of actual object
 		Student tempInstanceStudent = *classRosterArray[i];
-		if (studentID == tempInstanceStudent.getStudentID()) {
+		string debug8 = tempInstanceStudent.getStudentID();
+		bool debug9 = false;
+		if (studentID == debug8) debug9 = true;
+		if (debug9) {
 				//delete actual object. 
 			delete classRosterArray[i];
 			//shift all elements of array
@@ -104,11 +109,14 @@ void Roster::remove(const string studentID) {
 				classRosterArray[j] = classRosterArray[j+1];
 			}
 			currentNumStudents--; //exlude the last element
-		}
-		break; //exit from loop
+			noResult = false;
+			cout << "ID " << studentID << " was deleted\n";
+			break; //exit from loop
 		
+		}
+	
 	}
-	cout << "ID was not found\n";
+	if (noResult) cout << "ID "<< studentID << " was not found\n";
 }
 
 void Roster::printAll() {
