@@ -33,17 +33,7 @@ void  Student::setNumberDaysPerClass(int localNumberDaysPerClass[MAX_CLASSES]) {
     }
 
 }
-//void  Student::setNumberDaysPerClass(int numberDaysPerClass[], int numberClass) {
-//    if (numberClass >= 0 && numberClass < MAX_CLASSES) {
-//        this->numberDaysPerClass[numberClass] = numberDaysPerClass;
-//    }
-//    else {
-//        std::cout << "MG: array index in setter is out of boundaries.\n";
-//        for (int i = 0; i++; MAX_CLASSES) {
-//            this->numberDaysPerClass[i] = NULL;
-//        }
-//    }
-//}
+
 int symbPosition(string str, string symbol) {
     if (str.find(symbol) == str.rfind(symbol)
         && str.find(symbol) > 0

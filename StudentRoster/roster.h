@@ -8,7 +8,7 @@ private:
 public:
 	//constructor
 	Roster();
-	Roster(const string dataArray[]);
+	Roster(const string dataArray[], size_t size);
 	~Roster() {	}
 	void add(string studentID, string firstName, string lastName, string emailAddress, int age,
 		 int numberDaysPerClass[3], DegreeProgram degreeprogram);

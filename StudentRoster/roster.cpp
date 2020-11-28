@@ -20,12 +20,12 @@ DegreeProgram Roster::degreeParser(const string str) {
 
 }
 
-Roster::Roster(const string dataArray[]) {
+Roster::Roster(const string dataArray[], size_t size) {
 	this->currentNumStudents = 0;
 	for (int i = 0; i < MAX_STUDENTS; i++) { //initialization check that without it
 		this->classRosterArray[currentNumStudents] = NULL;
 	}
-	for (int i = 0; i < sizeof(dataArray); i++) {
+	for (int i = 0; i < size; i++) {
 		short fieldNumber = 0;
 		short previousPosition = 0;
 		string id, firstName, lastName, emailAddress;
