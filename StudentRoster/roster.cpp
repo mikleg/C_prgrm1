@@ -134,8 +134,9 @@ void Roster::printAverageDaysInCourse(const string studentID) {
 			cout << "Average days in course:\t" << (tempInstanceStudent.getDaysInCourse()[0]
 				+ tempInstanceStudent.getDaysInCourse()[1]
 				+ tempInstanceStudent.getDaysInCourse()[2]) / 3 << "\n";
-		}
 		break; //exit from loop
+		}
+		
 	}
 	//cout << "ID " << studentID << " was not found\n";
 }
