@@ -112,6 +112,7 @@ void Roster::remove(const string studentID) {
 }
 
 void Roster::printAll() {
+	cout << "Printing all students:\n";
 	for (int i = 0; i < currentNumStudents; i++) {
 		Student tempInstanceStudent = *classRosterArray[i];
 		tempInstanceStudent.print();
@@ -119,6 +120,7 @@ void Roster::printAll() {
 }
 
 void Roster::printAverageDaysInCourse(const string studentID) {
+	cout << "Printing AverageDaysInCourse:\n";
 	for (int i = 0; i < currentNumStudents; i++) {
 		// get shallow copy of actual object
 		Student tempInstanceStudent = *classRosterArray[i];
@@ -133,6 +135,7 @@ void Roster::printAverageDaysInCourse(const string studentID) {
 }
 
 void Roster::printByDegreeProgram(const DegreeProgram degreeProgram) {
+	cout << "Printing ByDegreeProgram:\n";
 	for (int i = 0; i < currentNumStudents; i++) {
 		// get shallow copy of actual object
 		Student tempInstanceStudent = *classRosterArray[i];
@@ -143,6 +146,7 @@ void Roster::printByDegreeProgram(const DegreeProgram degreeProgram) {
 }
 
 void Roster::printInvalidEmails() {
+	cout << "Printing InvalidEmails:\n";
 	for (int i = 0; i < currentNumStudents; i++) {
 		Student tempInstanceStudent = *classRosterArray[i];
 		if (!tempInstanceStudent.getEmailIsValid()) {

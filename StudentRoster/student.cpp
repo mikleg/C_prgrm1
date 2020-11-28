@@ -12,20 +12,6 @@ int Student::getNumberDaysPerClass(int numberClass) const {
     }
 }
 void  Student::setNumberDaysPerClass(int localNumberDaysPerClass[MAX_CLASSES]) {
-    /*if (numberClass >= 0 && numberClass < MAX_CLASSES) {
-        for (int i = 0; i++; i < numberClass) {
-            this->numberDaysPerClass[i] = numberDaysPerClass[i];
-        }
-        
-    }
-    else {
-        std::cout << "MG: array index in setter is out of boundaries.\n";
-        for (int i = 0; i++; MAX_CLASSES) {
-            this->numberDaysPerClass[i] = NULL;
-        }
-    }*/
-    //int tempArray[3] = {20, 30, 40};
-    int debug3 = MAX_CLASSES;
     for (int i = 0; i < MAX_CLASSES;  i++) {
         int debug2 = 0;
         this->numberDaysPerClass[i] = localNumberDaysPerClass[i];
@@ -43,16 +29,22 @@ int symbPosition(string str, string symbol) {
     else return NULL;
 }
 
+//bool domainIsValid(string domenPart) {
+//    if (symbPosition(domenPart, ".") != NULL) { //if we have . and it is not first and last 
+//        for (int i=0; i < domenPart.length(); i++) {
+//            if (!isalnum(domenPart[i]) && domenPart[i] != '.') {
+//                return false;
+//            }
+//        }
+//    }
+//    else return false;
+//    return true;
+//}
+
 bool domainIsValid(string domenPart) {
-    if (symbPosition(domenPart, ".") != NULL) { //if we have . and it is not first and last 
-        for (int i=0; i < domenPart.length(); i++) {
-            if (!isalnum(domenPart[i]) && domenPart[i] != '.') {
-                return false;
-            }
-        }
-    }
+    if (domenPart.find(' ') == string::npos && domenPart.find('.') != string::npos)
+        return true;
     else return false;
-    return true;
 }
 
 bool localIsValid(string localPart) {
@@ -65,9 +57,11 @@ bool mailIsValid(string email) {
     string localPart = "";
     string domenPart = "";
     if (symbPosition(email, "@") != NULL) {
-        localPart = email.substr(0, symbPosition(email, "@") + 1);
-        domenPart = email.substr(symbPosition(email, "@"), email.length() - symbPosition(email, "@") +1);
+        localPart = email.substr(0, symbPosition(email, "@"));
+        domenPart = email.substr(symbPosition(email, "@") + 1, email.length() - symbPosition(email, "@") +1);
     }
+    bool debug5 = domainIsValid(domenPart);
+    bool debug6 = localIsValid(localPart);
     if (domainIsValid(domenPart) && localIsValid(localPart))
         return true;
     else return false;
