@@ -95,8 +95,7 @@ void Roster::remove(const string studentID) {
 	for (int i = 0; i < currentNumStudents; i++) {
 		// get shallow copy of actual object
 		Student tempInstanceStudent = *classRosterArray[i];
-		string debug8 = tempInstanceStudent.getStudentID();
-		if (studentID == debug8) {
+		if (studentID == tempInstanceStudent.getStudentID()) {
 				//delete actual object. 
 			delete classRosterArray[i];
 			//shift all elements of array
@@ -115,8 +114,7 @@ void Roster::remove(const string studentID) {
 void Roster::printAll() {
 	cout << "Printing all students:\n";
 	for (int i = 0; i < currentNumStudents; i++) {
-		Student tempInstanceStudent = *classRosterArray[i];
-		tempInstanceStudent.print();
+		classRosterArray[i]->print();
 	}
 }
 
